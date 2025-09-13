@@ -1,4 +1,13 @@
-const itemDetails = ({ item }) => {
+type Itemprops = {
+  item: {
+    date: string;
+    category: string;
+    amount: string;
+    description: string;
+  };
+};
+
+const itemDetails = ({ item }: Itemprops) => {
   return (
     <div className="flex flex-col items-center justify-between gap-3 txet-lg text-gray-600">
       <p>

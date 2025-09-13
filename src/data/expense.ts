@@ -35,4 +35,4 @@ const ExpensesList = [
     date: "2025-09-05",
   },
 ];
-export default ExpensesList
+export default ExpensesList;

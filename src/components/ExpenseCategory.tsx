@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
+import type { CategoryItem} from "../type";
+import type { Expense } from "../type";
 
-const ExpenseCategory = ({ Category, setNewExpense }) => {
-  const [activeBtn, setActiveBtn] = useState(null);
-  const handleClick = (id) => {
+type ExpenseCategoryProps = {
+  Category: CategoryItem[];
+  setNewExpense: Dispatch<SetStateAction<Expense>>;
+};
+const ExpenseCategory = ({ Category, setNewExpense }: ExpenseCategoryProps) => {
+  const [activeBtn, setActiveBtn] = useState('');
+  const handleClick = (id:string) => {
     setActiveBtn(id);
     // console.log(id);
     // console.log(activeBtn);
   };
-  let isActive;
   return (
     <div>
       <section className="category grid grid-cols-4 py-8 px-4 gap-y-5">
@@ -23,7 +28,7 @@ const ExpenseCategory = ({ Category, setNewExpense }) => {
             >
               <span
                 className={`text-xl  h-10 w-10 flex items-center justify-center rounded-full ${
-                  isActive = item.category===activeBtn
+                  item.category === activeBtn
                     ? "text-white bg-blue-800"
                     : "text-blue-800 bg-blue-100"
                 }`}

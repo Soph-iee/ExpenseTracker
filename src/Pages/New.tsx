@@ -1,37 +1,41 @@
 import Keyboard from "../components/Keyboard";
 import Category from "../data/category";
-import Buttons from "../data/buttons";
+
 import { useState, useRef, useEffect } from "react";
 import ExpenseCategory from "../components/ExpenseCategory";
 import { useNavigate } from "react-router-dom";
+import type { Expense } from "../type";
+import type { ExpenseListProps } from "../type";
 
-const New = ({ expenseList, setExpenseList }) => {
+const New = ({ setExpenseList }: ExpenseListProps) => {
+  const id = Date.now();
   const navigate = useNavigate();
-  const dateInputRef = useRef(null);
-  const [newExpense, setNewExpense] = useState({
-    date: "",
-    amount: "",
+  const dateInputRef = useRef<HTMLInputElement>(null);
+
+  const [newExpense, setNewExpense] = useState<Expense>({
+    id: 0,
     description: "",
-    id: "",
+    amount: 0,
     category: "",
+    date: "",
   });
   const [input, setInput] = useState("");
-  const [result, setResult] = useState("");
+  const [, setResult] = useState("");
   const operators = ["+", "-"];
 
-  function isExpression(value) {
+  function isExpression(value: string) {
     return /[+\-*/]/.test(value);
   }
-  const id = Date.now().toString();
+
   useEffect(() => {
     if (
       newExpense.date !== "" &&
-      newExpense.amount !== "" &&
+      newExpense.amount !== 0 &&
       newExpense.category !== "" &&
-      newExpense.id !== ""
+      newExpense.id !== 0
     ) {
       console.log(newExpense);
-      setExpenseList((prev) => [...prev, newExpense]);
+      setExpenseList?.((prev) => [...prev, newExpense]);
       navigate("/");
     }
   }, [newExpense]);
@@ -51,15 +55,15 @@ const New = ({ expenseList, setExpenseList }) => {
           setInput("Error");
         }
       } else if (!isNaN(Number(input)) && input.trim() !== "") {
-        setNewExpense((prev) => ({ ...prev, amount: input }));
+        setNewExpense((prev) => ({ ...prev, amount: Number(input) }));
         setNewExpense((prev) => ({ ...prev, id: id }));
       }
     } else if (val === "date") {
-      dateInputRef.current.showPicker();
+      dateInputRef.current?.showPicker();
     } else if (val === "delete") {
       const newNumber = input.slice(0, -1);
       setInput(newNumber);
-    } else if (operators.includes(val)) {
+    } else if (operators.includes(val.toString())) {
       if (operators.includes(input.slice(-1))) {
         setInput((prev) => prev.slice(0, -1) + val);
       } else if (input !== "") {
@@ -103,7 +107,6 @@ const New = ({ expenseList, setExpenseList }) => {
         </div>
         <Keyboard
           handleNumberPress={handleNumberPress}
-          Buttons={Buttons}
           setNewExpense={setNewExpense}
           dateInputRef={dateInputRef}
           isExpression={isExpression}

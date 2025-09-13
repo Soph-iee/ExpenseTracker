@@ -19,7 +19,7 @@ function App() {
         <Route
           path="/new"
           element={
-            <New expenseList={expenseList} setExpenseList={setExpenseList} />
+            <New setExpenseList={setExpenseList} expenseList={expenseList} />
           }
         />
       </Routes>

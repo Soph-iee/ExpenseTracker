@@ -1,14 +1,23 @@
 import { FaCheck, FaEquals } from "react-icons/fa";
+// import type { ButtonsItem } from "../type";
+import Buttons from "../data/buttons";
+import type { Expense } from "../type";
+import type { Dispatch, SetStateAction } from "react";
 
+type KeyboardProps = {
+  handleNumberPress: (val: string | number) => void;
+  setNewExpense: Dispatch<SetStateAction<Expense>>;
+  dateInputRef: React.Ref<HTMLInputElement> | null;
+  isExpression: (value: string) => boolean;
+  input: string;
+};
 const Keyboard = ({
-  Buttons,
   handleNumberPress,
   setNewExpense,
   dateInputRef,
   isExpression,
   input,
-  
-}) => {
+}: KeyboardProps) => {
   return (
     <main className="grid grid-cols-4 bg-blue-50  py-2 mt-2 rounded-xl shadow-xl relative">
       {Buttons.map((btn) => {
@@ -40,7 +49,7 @@ const Keyboard = ({
         className="absolute top-0 w-0 h-0 opacity-0"
         onChange={(e) => {
           const Newdate = e.target.value;
-          setNewExpense(prev=>({...prev, date:Newdate}))
+          setNewExpense((prev) => ({ ...prev, date: Newdate }));
         }}
       />
     </main>

@@ -1,6 +1,12 @@
 import Category from "../data/category";
+import type { CategoryItem } from "../type";
+import type { ExpenseListProps } from "../type";
 
-const Breakdown = ({ expenseList }) => {
+const Breakdown = ({
+  expenseList,
+}: ExpenseListProps & {
+  icons?: CategoryItem[];
+}) => {
   return (
     <section className=" w-full shadow-lg text-gray-700">
       <p className="pl-3 font-bold text-lg">Expenses</p>
@@ -13,15 +19,25 @@ const Breakdown = ({ expenseList }) => {
   );
 };
 
-const Expense = ({ category, description, amount, icons }) => {
+type ExpenseItem = { category: string; amount: number; description: string };
+
+type ExpensesProps = ExpenseItem & {
+  icons: CategoryItem[];
+};
+const Expense = ({ category, description, amount, icons }: ExpensesProps) => {
   return (
     <div className="grid grid-cols-3 justify-items-start  px-4 mb-2 text-base h-auto">
       <p className="category">
         {icons.map((item, index) => {
           if (item.category === category) {
             return (
-              <span key={index} className="h-10 w-10 border border-gray-400 rounded-full bg-blue-200 flex items-center justify-center">
-                {<item.icon className="text-xl text-gray-800 place-self-center " />}
+              <span
+                key={index}
+                className="h-10 w-10 border border-gray-400 rounded-full bg-blue-200 flex items-center justify-center"
+              >
+                {
+                  <item.icon className="text-xl text-gray-800 place-self-center " />
+                }
               </span>
             );
           }

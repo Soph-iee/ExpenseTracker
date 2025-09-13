@@ -1,4 +1,4 @@
-import type { IconType } from "react-icons";
+
 import {
   FaCar,
   FaHospital,
@@ -7,12 +7,7 @@ import {
   FaUtensils,
 } from "react-icons/fa";
 import { FaHouse, FaPeopleGroup, FaShirt } from "react-icons/fa6";
-type CategoryItem = {
-  id: number;
-  category: string;
-  icon: IconType;
-};
-
+import type { CategoryItem } from "../type";
 const Category: CategoryItem[] = [
   { category: "food", icon: FaUtensils, id: 1 },
   { category: "shopping", icon: FaShoppingCart, id: 2 },
