@@ -47,6 +47,7 @@ const Keyboard = ({
         type="date"
         ref={dateInputRef}
         className="absolute top-0 w-0 h-0 opacity-0"
+        required
         onChange={(e) => {
           const Newdate = e.target.value;
           setNewExpense((prev) => ({ ...prev, date: Newdate }));
