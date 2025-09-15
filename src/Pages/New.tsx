@@ -84,9 +84,9 @@ const New = ({ setExpenseList }: ExpenseListProps) => {
             type="text"
             id="amount"
             value={input}
-            required
+            required            className=" bg-blue-100 p-2 w-full rounded-xl  text-lg font-bold text-blue-950 outline-gray-300"
+
             readOnly
-            className=" bg-blue-100 p-2 w-full rounded-xl  text-lg font-bold text-blue-950 outline-gray-300"
             placeholder="Enter Amount"
           />
         </div>

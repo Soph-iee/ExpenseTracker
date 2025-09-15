@@ -11,7 +11,7 @@ function App() {
   const [expenseList, setExpenseList] = useState(ExpensesList);
 
   return (
-    <div className="max-w-[500px] h-screen">
+    <div className="max-w-[500px] h-screen mx-auto ">
       <Nav />
       {/* <Test/> */}
       <Routes>
