@@ -26,7 +26,7 @@ type ExpensesProps = ExpenseItem & {
 };
 const Expense = ({ category, description, amount, icons }: ExpensesProps) => {
   return (
-    <div className="grid grid-cols-3 justify-items-start  px-4 mb-2 text-base h-auto">
+    <div className="flex justify-between mb-3 text-base h-auto ">
       <p className="category">
         {icons.map((item, index) => {
           if (item.category === category) {
