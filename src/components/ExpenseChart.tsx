@@ -1,7 +1,7 @@
 import { Bar } from "react-chartjs-2";
 // import ExpensesList from "../data/expense";
 import type { ExpenseListProps } from "../type";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js/auto";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
