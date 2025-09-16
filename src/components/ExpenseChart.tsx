@@ -1,13 +1,15 @@
-import { Bar, Doughnut, Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 // import ExpensesList from "../data/expense";
 import type { ExpenseListProps } from "../type";
-import { Chart as ChartJS } from "chart.js/auto";
-import { useState } from "react";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
 
 type GroupedDataProps = Record<string, number>;
 
 const ExpenseChart = ({ expenseList }: ExpenseListProps) => {
-  const [view, setView] = useState(Bar);
+  // const [view, setView] = useState(Bar);
 
   const groupedData = expenseList.reduce((acc, curr) => {
     acc[curr.category] = (acc[curr.category] || 0) + curr.amount;
