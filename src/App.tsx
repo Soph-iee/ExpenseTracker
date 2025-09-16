@@ -7,15 +7,18 @@ import ExpensesList from "./data/expense";
 import "./index.css";
 // import Test from "./Pages/calculator";
 
+import ExpenseChart from "./components/ExpenseChart";
+
 function App() {
   const [expenseList, setExpenseList] = useState(ExpensesList);
 
   return (
-    <div className="max-w-[500px] h-screen mx-auto ">
+    <div className="max-w-[500px] h-auto mx-auto ">
       <Nav />
-      {/* <Test/> */}
+
       <Routes>
         <Route path="/" element={<Home expenseList={expenseList} />} />
+        <Route path="/expense" element={<ExpenseChart expenseList={expenseList} />} />
         <Route
           path="/new"
           element={

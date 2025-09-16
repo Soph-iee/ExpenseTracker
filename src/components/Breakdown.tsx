@@ -8,7 +8,7 @@ const Breakdown = ({
   icons?: CategoryItem[];
 }) => {
   return (
-    <section className=" w-full shadow-lg text-gray-700">
+    <section className=" w-full shadow-lg text-gray-700  max-h-[600px]  overflow-y-scroll">
       <p className="pl-3 font-bold text-lg">Expenses</p>
       <div className=" bg-gradient-to-bl fromblue-50  to-blue-100 p-4 rounded-lg shadow-lg">
         {expenseList.map((item) => {
